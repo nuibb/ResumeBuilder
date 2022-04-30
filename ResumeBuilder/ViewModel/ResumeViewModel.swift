@@ -9,7 +9,7 @@ import Foundation
 
 struct ResumeViewModel {
     let resume: Resume
-    private(set) var name = ""
+    private(set) var title = ""
     
     init(resume: Resume) {
         self.resume = resume
@@ -18,14 +18,14 @@ struct ResumeViewModel {
     
     //Creating a mutating function allows us to change the properties of the struct.
     private mutating func updateProperties() {
-        name = setName(resume: resume)
+        title = setName(resume: resume)
     }
 }
 
 extension ResumeViewModel {
     // Create separate functions for each property.
     private func setName(resume: Resume) -> String {
-        return "\(resume.name.uppercased())'S RESUME"
+        return "\(resume.title.uppercased())'S RESUME"
     }
 }
 

@@ -14,7 +14,7 @@ class DatabaseHandler {
     static let shared = DatabaseHandler()
     
     init() {
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context = PersistentStorage.shared.context
     }
     
     func add<T: NSManagedObject>(_ type: T.Type) -> T? {

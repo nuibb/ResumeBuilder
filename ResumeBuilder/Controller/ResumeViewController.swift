@@ -39,7 +39,7 @@ extension ResumeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifierNameForResumeCell, for: indexPath) as! ResumeCell
         if let resume = self.resume {
-            cell.title.text = resume.name
+            cell.title.text = resume.title
         }
         
         return cell

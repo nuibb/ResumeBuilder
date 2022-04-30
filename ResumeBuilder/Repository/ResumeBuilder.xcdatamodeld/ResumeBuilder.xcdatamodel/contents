@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Resume" representedClassName=".Resume" syncable="YES">
-        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="CDAdvanced" representedClassName="CDAdvanced" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="organization" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDOrganization" inverseName="advanced" inverseEntity="CDOrganization"/>
+        <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDResume" inverseName="advanced" inverseEntity="CDResume"/>
+    </entity>
+    <entity name="CDBasic" representedClassName="CDBasic" syncable="YES">
+        <attribute name="bulleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="contents" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDResume" inverseName="basic" inverseEntity="CDResume"/>
+    </entity>
+    <entity name="CDOrganization" representedClassName="CDOrganization" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="period" optional="YES" attributeType="String"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <attribute name="roleTitle" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="advanced" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAdvanced" inverseName="organization" inverseEntity="CDAdvanced"/>
+    </entity>
+    <entity name="CDProfile" representedClassName="CDProfile" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="avatar" optional="YES" attributeType="Binary"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDResume" inverseName="profile" inverseEntity="CDResume"/>
+    </entity>
+    <entity name="CDResume" representedClassName="CDResume" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="advanced" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDAdvanced" inverseName="resume" inverseEntity="CDAdvanced"/>
+        <relationship name="basic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDBasic" inverseName="resume" inverseEntity="CDBasic"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDProfile" inverseName="resume" inverseEntity="CDProfile"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Resume" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="CDAdvanced" positionX="-348.7799682617188" positionY="-83.1251220703125" width="128" height="74"/>
+        <element name="CDBasic" positionX="-187.73876953125" positionY="-77.08038330078125" width="128" height="89"/>
+        <element name="CDOrganization" positionX="-344.5904541015625" positionY="46.54690551757812" width="128" height="134"/>
+        <element name="CDProfile" positionX="-227.6552734375" positionY="-393.1483764648438" width="128" height="119"/>
+        <element name="CDResume" positionX="-270" positionY="-234" width="128" height="104"/>
     </elements>
 </model>

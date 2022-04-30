@@ -13,7 +13,7 @@ class ResumeListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addResumeButton: UIBarButtonItem!
     
-    private let dbManager = DbManager()
+    private let dbManager = DatabaseManager()
     private var resumes = [ResumeViewModel]()
     private(set) var resumeViewModel: ResumeViewModel?
     
@@ -51,7 +51,7 @@ extension ResumeListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifierNameForResumeCell, for: indexPath) as! ResumeCell
         let resume = self.resumes[indexPath.row] as ResumeViewModel
-        cell.title.text = resume.name
+        cell.title.text = resume.title
         return cell
     }
     
@@ -64,25 +64,19 @@ extension ResumeListVC: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             let resumeViewModel = self.resumes[indexPath.row] as ResumeViewModel
             tableView.beginUpdates()
-            self.dbManager.deleteObjectFromDb(object: resumeViewModel.resume)
-            self.resumes.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            if self.dbManager.deleteResume(byIdentifier: resumeViewModel.resume.id) {
+                self.resumes.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
             tableView.endUpdates()
         }
     }
 }
 
 extension ResumeListVC {
-    
     private func getResumes() {
-        dbManager.getResumesFromDb() { (resumes, error) in
-            if let error = error {
-                print("Got error: \(error.localizedDescription)")
-                return
-            }
-            guard let resumes = resumes  else { return }
-            self.searchResults = resumes
-        }
+        guard let resumes = dbManager.getAllResume() else { return }
+        self.searchResults = resumes
     }
 }
 
@@ -107,8 +101,8 @@ extension ResumeListVC {
 
         let action = UIAlertAction(title: Constants.alertActionTitle, style: .default) { [unowned alert] _ in
             guard let textFields = alert.textFields, textFields.count > 0 else { return }
-            if let resumeName = textFields[0].text {
-                self.dbManager.addResumeIntoDb(name: resumeName)
+            if let resumeTitle = textFields[0].text {
+                self.dbManager.createResume(title: resumeTitle)
                 self.getResumes()
             }
         }

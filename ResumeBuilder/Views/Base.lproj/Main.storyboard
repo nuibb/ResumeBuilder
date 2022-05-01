@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ROd-tE-JbL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -87,24 +88,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjw-Nm-bjY">
-                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem title="Add Section" id="acm-rG-axT">
-                                        <connections>
-                                            <action selector="addSection:" destination="uV2-Yt-j1e" id="dMC-9D-CUd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XgQ-wX-Kd3"/>
-                                    <barButtonItem title="Edit Sections" id="ysm-5t-Ieu">
-                                        <connections>
-                                            <action selector="editSections:" destination="uV2-Yt-j1e" id="5E8-fc-T1Y"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VHZ-RU-LHJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResumeCell" rowHeight="75" id="D2a-rV-PeW" customClass="ResumeCell" customModule="ResumeBuilder" customModuleProvider="target">
@@ -141,13 +126,10 @@
                         <viewLayoutGuide key="safeArea" id="7wp-0S-UKM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VHZ-RU-LHJ" secondAttribute="trailing" id="37G-Vi-BMJ"/>
-                            <constraint firstAttribute="bottom" secondItem="gjw-Nm-bjY" secondAttribute="bottom" id="3gN-sO-ANJ"/>
-                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="leading" secondItem="Vrf-d4-xD1" secondAttribute="leading" id="HsV-DW-35o"/>
-                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="leading" secondItem="gjw-Nm-bjY" secondAttribute="leading" id="V2g-KC-PDb"/>
-                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="top" secondItem="7wp-0S-UKM" secondAttribute="top" id="biN-fm-OHD"/>
-                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="trailing" secondItem="gjw-Nm-bjY" secondAttribute="trailing" id="d9r-VB-YjU"/>
-                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="bottom" secondItem="7wp-0S-UKM" secondAttribute="bottom" id="wuP-2z-vvx"/>
+                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="leading" secondItem="7wp-0S-UKM" secondAttribute="leading" id="EoO-BS-lLu"/>
+                            <constraint firstAttribute="bottom" secondItem="VHZ-RU-LHJ" secondAttribute="bottom" id="FxM-Qp-EUg"/>
+                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="top" secondItem="7wp-0S-UKM" secondAttribute="top" id="poF-Gd-oNF"/>
+                            <constraint firstItem="VHZ-RU-LHJ" firstAttribute="trailing" secondItem="7wp-0S-UKM" secondAttribute="trailing" id="rv0-fr-5o1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fPb-Xb-Ngv"/>

@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct Resume : Codable {
+struct Resume  {
     let id: UUID
     let title: String
-    let profile : Profile?
-    let basicSections : [BasicSection]?
-    let advancedSections : [AdvancedSection]?
+    let profile : Profile
+    let basicSections : [BasicSection]
+    let advancedSections : [AdvancedSection]
+    
+    init(_id: UUID, _title: String, _profile: Profile, _basicSections: [BasicSection], _advancedSections: [AdvancedSection]) {
+        self.id = _id
+        self.title = _title
+        self.profile = _profile
+        self.basicSections = _basicSections
+        self.advancedSections = _advancedSections
+    }
 }

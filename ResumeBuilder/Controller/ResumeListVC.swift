@@ -15,7 +15,7 @@ class ResumeListVC: UIViewController {
     
     private let dbManager = DatabaseManager()
     private var resumes = [ResumeViewModel]()
-    private(set) var resumeViewModel: ResumeViewModel?
+    //private(set) var resumeViewModel: ResumeViewModel?
     
     var searchResults: [Resume]? {
         didSet {
@@ -30,10 +30,12 @@ class ResumeListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.tableView.rowHeight = 50;
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tableView.rowHeight = 50;
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         getResumes()
     }
    
@@ -85,8 +87,7 @@ extension ResumeListVC {
         if segue.identifier == Constants.segueIdentifierNameForResume {
             let resumeViewController = segue.destination as! ResumeViewController
             guard let indexPath = sender as? IndexPath else {return}
-            print(self.resumes[indexPath.row])
-            resumeViewController.resume = self.resumes[indexPath.row]
+            resumeViewController.resumeViewModel = self.resumes[indexPath.row]
         }
     }
 }

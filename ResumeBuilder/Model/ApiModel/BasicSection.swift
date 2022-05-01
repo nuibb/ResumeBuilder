@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct BasicSection : Codable {
+struct BasicSection {
     let title: String
     let contents: String
     let bulleted: Bool

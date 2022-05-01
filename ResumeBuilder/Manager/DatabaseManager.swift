@@ -10,11 +10,11 @@ import Foundation
 struct DatabaseManager
 {
     private let _resumeRepository : ResumeDataRepository = ResumeDataRepository()
+    private let seedData = SeedData()
 
     func createResume(title: String)
     {
-        //let resume = Resume(from: <#Decoder#>)
-        //_resumeRepository.create(record: resume)
+        _resumeRepository.create(record: seedData.getDefaultResumeData(title: title))
     }
 
     func getAllResume() -> [Resume]?

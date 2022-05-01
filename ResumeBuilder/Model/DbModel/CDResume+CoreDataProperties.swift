@@ -66,7 +66,7 @@ extension CDResume {
     
     func convertToResume() -> Resume
     {
-        return Resume(id: self.id!, title: self.title!, profile: self.profile!.convertToProfile(), basicSections: convertToBasicSections(), advancedSections: convertToAdvancedSection())
+        return Resume(_id: self.id!, _title: self.title!, _profile: self.profile!.convertToProfile()!, _basicSections: convertToBasicSections()!, _advancedSections: convertToAdvancedSection()!)
     }
     
     private func convertToBasicSections() -> [BasicSection]?

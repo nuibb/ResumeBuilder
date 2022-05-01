@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct AdvancedSection : Codable {
+struct AdvancedSection {
     let title: String
     let organizations: [Organization]?
     

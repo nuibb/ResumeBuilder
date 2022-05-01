@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct Organization : Codable {
+struct Organization {
     let title: String
     let name: String
     let role: String

@@ -28,41 +28,34 @@ struct ResumeDataRepository : ResumeRepository {
 //    }
     
     func create(record: Resume) {
-        
         //let cdResume = mapper(object: object) as! CDResume
         
         guard let cdResume = handler.add(CDResume.self) else { return }
         cdResume.id = record.id
         cdResume.title = record.title
         
-        if(record.profile != nil)
-        {
-            guard let cdProfile = handler.add(CDProfile.self) else { return }
-            cdResume.profile = record.profile?.toMap(cdProfile: cdProfile)
-        }
+        guard let cdProfile = handler.add(CDProfile.self) else { return }
+        cdResume.profile = record.profile.toMap(cdProfile: cdProfile)
         
-        if(record.basicSections != nil)
-        {
+        var basicSet = Set<CDBasic>()
+        
+        print(record.basicSections.count)
+        
+        record.basicSections.forEach({ (basicSection) in
             guard let cdBasic = handler.add(CDBasic.self) else { return }
-            var basicSet = Set<CDBasic>()
-            record.basicSections?.forEach({ (basicSection) in
-                basicSet.insert(basicSection.toMap(cdBasic: cdBasic))
-            })
-            
-            cdResume.basic = basicSet
-        }
+            basicSet.insert(basicSection.toMap(cdBasic: cdBasic))
+        })
         
-        if(record.advancedSections != nil)
-        {
+        cdResume.basic = basicSet
+        
+        var advancedSet = Set<CDAdvanced>()
+        record.advancedSections.forEach({ (advancedSection) in
             guard let cdAdvanced = handler.add(CDAdvanced.self) else { return }
-            var advancedSet = Set<CDAdvanced>()
-            record.advancedSections?.forEach({ (advancedSection) in
-                guard let section = advancedSection.toMap(cdAdvanced: cdAdvanced) else { return }
-                advancedSet.insert(section as! CDAdvanced)
-            })
-            
-            cdResume.advanced = advancedSet
-        }
+            guard let section = advancedSection.toMap(cdAdvanced: cdAdvanced) else { return }
+            advancedSet.insert(section as! CDAdvanced)
+        })
+        
+        cdResume.advanced = advancedSet
         
         handler.save()
     }

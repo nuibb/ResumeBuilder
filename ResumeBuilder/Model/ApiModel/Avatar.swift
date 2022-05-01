@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Avatar: Codable {
+struct Avatar {
 
     public let photo: Data
     

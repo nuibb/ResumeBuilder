@@ -9,16 +9,19 @@ import Foundation
 import CoreData
 
 struct AdvancedSection {
+    let id: UUID
     let title: String
     let organizations: [Organization]?
     
-    init(_title: String, _organizations: [Organization])
+    init(_id: UUID, _title: String, _organizations: [Organization])
     {
+        self.id = _id
         self.title = _title
         self.organizations = _organizations
     }
     
     func toMap<T: NSManagedObject>(cdAdvanced: CDAdvanced) -> T? {
+        cdAdvanced.id = id
         cdAdvanced.title = title
         var organizationSet = Set<CDOrganization>()
         organizations?.forEach({ (organization) in

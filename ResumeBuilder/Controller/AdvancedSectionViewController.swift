@@ -25,7 +25,7 @@ class AdvancedSectionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,13 +52,14 @@ extension AdvancedSectionViewController: UITableViewDelegate, UITableViewDataSou
         cell.roleTitle.text = organization.roleTitle
         cell.role.text = organization.role
         cell.period.text = organization.period
+        cell.contentTitle.text = organization.contentTitle
         cell.content.text = organization.content
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 460
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

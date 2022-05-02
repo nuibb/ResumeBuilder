@@ -16,6 +16,7 @@ extension CDBasic {
         return NSFetchRequest<CDBasic>(entityName: "CDBasic")
     }
 
+    @NSManaged public var id: UUID?
     @NSManaged public var bulleted: Bool
     @NSManaged public var contents: String?
     @NSManaged public var title: String?
@@ -31,6 +32,6 @@ extension CDBasic {
     
     func convertToBasicSection() -> BasicSection
     {
-        return BasicSection(_title: self.title!, _contents: self.contents!, _bulleted: self.bulleted)
+        return BasicSection(_id: self.id!, _title: self.title!, _contents: self.contents!, _bulleted: self.bulleted)
     }
 }

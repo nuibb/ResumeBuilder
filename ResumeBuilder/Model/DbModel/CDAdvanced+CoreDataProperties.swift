@@ -16,6 +16,7 @@ extension CDAdvanced {
         return NSFetchRequest<CDAdvanced>(entityName: "CDAdvanced")
     }
 
+    @NSManaged public var id: UUID?
     @NSManaged public var title: String?
     @NSManaged public var organization: Set<CDOrganization>?
     @NSManaged public var resume: CDResume?
@@ -47,7 +48,7 @@ extension CDAdvanced {
     
     func convertToAdvancedSection() -> AdvancedSection
     {
-        return AdvancedSection(_title: self.title!, _organizations: convertToOrganizations()!)
+        return AdvancedSection(_id: self.id!, _title: self.title!, _organizations: convertToOrganizations()!)
     }
     
     private func convertToOrganizations() -> [Organization]?

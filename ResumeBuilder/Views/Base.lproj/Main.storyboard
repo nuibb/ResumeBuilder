@@ -289,7 +289,7 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NBY-eF-3rd">
                                                     <rect key="frame" x="50" y="28" width="314" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="TWj-CE-tNU" id="wm1-sZ-ZQ9"/>
@@ -303,7 +303,7 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atI-rI-zFh">
                                                     <rect key="frame" x="50" y="90" width="314" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="TWj-CE-tNU" id="rf8-is-hyb"/>
@@ -317,26 +317,31 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1CY-KI-gX0">
                                                     <rect key="frame" x="50" y="173" width="314" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="TWj-CE-tNU" id="9Hu-yo-ypj"/>
                                                     </connections>
                                                 </textField>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Aov-w5-Ips">
-                                                    <rect key="frame" x="50" y="227" width="314" height="150"/>
+                                                    <rect key="frame" x="50" y="235" width="314" height="150"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="Zsj-5u-p3n"/>
                                                     </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <color key="textColor" systemColor="labelColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="TWj-CE-tNU" id="Zka-Ml-i68"/>
                                                     </connections>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH4-LZ-Z4Z">
+                                                    <rect key="frame" x="50" y="227" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="W8A-5h-wML" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="1nk-s3-ps9"/>
@@ -346,6 +351,7 @@
                                                 <constraint firstItem="atI-rI-zFh" firstAttribute="top" secondItem="elv-Jf-dSj" secondAttribute="bottom" constant="8" symbolic="YES" id="7bc-iy-CeE"/>
                                                 <constraint firstItem="1CY-KI-gX0" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="7ru-W4-jxx"/>
                                                 <constraint firstItem="W8A-5h-wML" firstAttribute="top" secondItem="z2P-sR-fkE" secondAttribute="top" constant="20" symbolic="YES" id="8jj-o5-Ub5"/>
+                                                <constraint firstItem="CH4-LZ-Z4Z" firstAttribute="top" secondItem="1CY-KI-gX0" secondAttribute="bottom" constant="20" id="AQq-su-nqh"/>
                                                 <constraint firstItem="NBY-eF-3rd" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="ASW-NH-45A"/>
                                                 <constraint firstItem="elv-Jf-dSj" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="Aeb-Tj-x1j"/>
                                                 <constraint firstItem="elv-Jf-dSj" firstAttribute="top" secondItem="NBY-eF-3rd" secondAttribute="bottom" constant="20" id="Epy-mj-4Xm"/>
@@ -353,17 +359,20 @@
                                                 <constraint firstAttribute="trailing" secondItem="NBY-eF-3rd" secondAttribute="trailing" constant="50" id="OoF-L3-Oys"/>
                                                 <constraint firstItem="atI-rI-zFh" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="RZB-ot-58m"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OLx-Ae-okC" secondAttribute="trailing" constant="20" symbolic="YES" id="Sno-ft-NsP"/>
+                                                <constraint firstItem="Aov-w5-Ips" firstAttribute="top" secondItem="CH4-LZ-Z4Z" secondAttribute="bottom" constant="8" symbolic="YES" id="aIy-5D-zKA"/>
                                                 <constraint firstAttribute="trailing" secondItem="1CY-KI-gX0" secondAttribute="trailing" constant="50" id="aLr-FV-3nO"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W8A-5h-wML" secondAttribute="trailing" constant="20" symbolic="YES" id="aRn-Xi-4n1"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CH4-LZ-Z4Z" secondAttribute="trailing" constant="20" symbolic="YES" id="asx-Aa-lIW"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="elv-Jf-dSj" secondAttribute="trailing" constant="20" symbolic="YES" id="h9y-OA-OBE"/>
                                                 <constraint firstAttribute="trailing" secondItem="atI-rI-zFh" secondAttribute="trailing" constant="50" id="wDZ-aJ-r8Q"/>
                                                 <constraint firstItem="OLx-Ae-okC" firstAttribute="top" secondItem="atI-rI-zFh" secondAttribute="bottom" constant="20" id="wdw-7N-FhH"/>
-                                                <constraint firstItem="Aov-w5-Ips" firstAttribute="top" secondItem="1CY-KI-gX0" secondAttribute="bottom" constant="20" id="yGY-uB-tNo"/>
                                                 <constraint firstItem="Aov-w5-Ips" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="zDV-ky-dL7"/>
+                                                <constraint firstItem="CH4-LZ-Z4Z" firstAttribute="leading" secondItem="z2P-sR-fkE" secondAttribute="leading" constant="50" id="ziA-GF-AR1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="content" destination="Aov-w5-Ips" id="W64-SN-vLj"/>
+                                            <outlet property="contentTitle" destination="CH4-LZ-Z4Z" id="NtD-a8-em1"/>
                                             <outlet property="name" destination="NBY-eF-3rd" id="1u8-4q-GU8"/>
                                             <outlet property="period" destination="1CY-KI-gX0" id="WyK-JS-Cnu"/>
                                             <outlet property="role" destination="atI-rI-zFh" id="Zec-2b-yir"/>
@@ -412,7 +421,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thh-eM-Y3q">
                                 <rect key="frame" x="50" y="147" width="314" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="9At-71-iqt" id="RcS-5L-gxD"/>
@@ -431,7 +440,7 @@
                                     <constraint firstAttribute="height" constant="200" id="pPG-Cb-hk0"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="9At-71-iqt" id="dfT-bZ-eg2"/>

@@ -16,7 +16,9 @@ extension CDOrganization {
         return NSFetchRequest<CDOrganization>(entityName: "CDOrganization")
     }
 
+    @NSManaged public var id: UUID?
     @NSManaged public var content: String?
+    @NSManaged public var contentTitle: String?
     @NSManaged public var name: String?
     @NSManaged public var period: String?
     @NSManaged public var role: String?
@@ -34,6 +36,6 @@ extension CDOrganization {
     
     func convertToOrganization() -> Organization
     {
-        return Organization(_title: self.title!, _name: self.name!, _role: self.role!, _roleTitle: self.roleTitle!, _period: self.period!, _content: self.content!)
+        return Organization(_id: id!, _title: self.title!, _name: self.name!, _role: self.role!, _roleTitle: self.roleTitle!, _period: self.period!, _contentTitle: self.contentTitle!, _content: self.content!)
     }
 }

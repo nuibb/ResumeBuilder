@@ -63,6 +63,7 @@ class Constants{
     static let workOrganizationRole2 = "Planning Manager"
     static let workOrganizationPeriod1 = "Mar 2020 - Present"
     static let workOrganizationPeriod2 = "June 2019 - April 2022"
+    static let workOrganizationContentTitle = "Projects"
     static let workOrganizationContent1 = "Managed a team of 20 people from various background. Built and implemented the production request process for the whole dealer network."
     static let workOrganizationContent2 = "Recruited 5 executive planners to create the new Planning business unit. Reduced stock with 20% by implementing a quicker ordering system."
     
@@ -76,6 +77,7 @@ class Constants{
     static let educationInstituteRole2 = "B.A. Business"
     static let educationInstitutePeriod1 = "Mar 2017 - April 2019"
     static let educationInstitutePeriod2 = "Feb 2013 - Feb 2017"
+    static let educationInstituteContentTitle = "Specialization"
     static let educationInstituteContent1 = "Specialized in Marketing and Communication. Achieved 2 honorary awards for final thesis."
     static let educationInstituteContent2 = "Graduated with a 3.6 GPA. Specialized in Commercial Management."
 }

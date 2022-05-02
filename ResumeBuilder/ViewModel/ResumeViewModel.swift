@@ -93,7 +93,7 @@ extension ResumeViewModel {
 extension ResumeViewModel {
     mutating func addSection(template: Template) -> Bool {
         if template.self == Template.Basic {
-            let basicSection = BasicSection(_title: "Basic", _contents: "", _bulleted: false)
+            let basicSection = BasicSection(_id: UUID(), _title: "Basic", _contents: "", _bulleted: false)
             let flag = dbManager.addBasicSection(section: basicSection, into: self.resume)
             if flag {
                 self.resume.basicSections.append(basicSection)
@@ -101,8 +101,8 @@ extension ResumeViewModel {
             }
             return flag
         } else {
-            let organization = Organization(_title: "", _name: "", _role: "", _roleTitle: "", _period: "", _content: "")
-            let advancedSection = AdvancedSection(_title: "Advanced", _organizations: [organization])
+            let organization = Organization(_id: UUID(), _title: "", _name: "", _role: "", _roleTitle: "", _period: "", _contentTitle: "", _content: "")
+            let advancedSection = AdvancedSection(_id: UUID(), _title: "Advanced", _organizations: [organization])
             let flag = dbManager.addAdvancedSection(section: advancedSection, into: self.resume)
             if flag {
                 self.resume.advancedSections.append(advancedSection)

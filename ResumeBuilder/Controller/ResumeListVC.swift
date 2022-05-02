@@ -80,8 +80,9 @@ extension ResumeListVC {
         guard let resumes = dbManager.getAllResume() else { return }
         self.searchResults = resumes
     }
-}
+}//
 
+// MARK: Segue Configuration
 extension ResumeListVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.segueIdentifierNameForResume {

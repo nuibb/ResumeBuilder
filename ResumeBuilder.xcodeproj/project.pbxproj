@@ -29,6 +29,9 @@
 		8B2A5C352819D3D400BBAB85 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A5C342819D3D400BBAB85 /* ResumeViewController.swift */; };
 		8B515FFB281B13B50048E418 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B515FFA281B13B50048E418 /* DatabaseHandler.swift */; };
 		8B515FFD281B91240048E418 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B515FFC281B91240048E418 /* Constants.swift */; };
+		8B9990BF281F6DCD00D937FA /* BasicSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9990BE281F6DCD00D937FA /* BasicSectionViewController.swift */; };
+		8B9990C1281F7ECB00D937FA /* AdvancedSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9990C0281F7ECB00D937FA /* AdvancedSectionViewController.swift */; };
+		8B9990C3281F7EE100D937FA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9990C2281F7EE100D937FA /* ProfileViewController.swift */; };
 		8BB4CB24281DC2EB006690CF /* CDProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4CB22281DC2EB006690CF /* CDProfile+CoreDataClass.swift */; };
 		8BB4CB25281DC2EB006690CF /* CDProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB4CB23281DC2EB006690CF /* CDProfile+CoreDataProperties.swift */; };
 		8BD55C81281E7FBD0060441D /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD55C80281E7FBD0060441D /* FooterView.xib */; };
@@ -92,6 +95,9 @@
 		8B2A5C342819D3D400BBAB85 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
 		8B515FFA281B13B50048E418 /* DatabaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		8B515FFC281B91240048E418 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8B9990BE281F6DCD00D937FA /* BasicSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSectionViewController.swift; sourceTree = "<group>"; };
+		8B9990C0281F7ECB00D937FA /* AdvancedSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSectionViewController.swift; sourceTree = "<group>"; };
+		8B9990C2281F7EE100D937FA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8BB4CB22281DC2EB006690CF /* CDProfile+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8BB4CB23281DC2EB006690CF /* CDProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8BD55C80281E7FBD0060441D /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
@@ -197,7 +203,10 @@
 				8BD55C82281E7FE00060441D /* FooterView.swift */,
 				8B2A5C2C28194A4200BBAB85 /* ResumeCell.swift */,
 				8B2A5BEA2817A72900BBAB85 /* ResumeListVC.swift */,
+				8B9990C2281F7EE100D937FA /* ProfileViewController.swift */,
 				8B2A5C342819D3D400BBAB85 /* ResumeViewController.swift */,
+				8B9990BE281F6DCD00D937FA /* BasicSectionViewController.swift */,
+				8B9990C0281F7ECB00D937FA /* AdvancedSectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -447,11 +456,14 @@
 				8BB4CB24281DC2EB006690CF /* CDProfile+CoreDataClass.swift in Sources */,
 				8BB4CB25281DC2EB006690CF /* CDProfile+CoreDataProperties.swift in Sources */,
 				8BE024B7281CFFAF001BB108 /* CDResume+CoreDataProperties.swift in Sources */,
+				8B9990C1281F7ECB00D937FA /* AdvancedSectionViewController.swift in Sources */,
 				8B2A5C2F2819571800BBAB85 /* ResumeViewModel.swift in Sources */,
 				8BE024B9281CFFAF001BB108 /* CDBasic+CoreDataClass.swift in Sources */,
 				8B2A5BF12817A72900BBAB85 /* ResumeBuilder.xcdatamodeld in Sources */,
 				8BE024BC281CFFAF001BB108 /* CDOrganization+CoreDataClass.swift in Sources */,
 				8BE024C3281D7525001BB108 /* SeedData.swift in Sources */,
+				8B9990C3281F7EE100D937FA /* ProfileViewController.swift in Sources */,
+				8B9990BF281F6DCD00D937FA /* BasicSectionViewController.swift in Sources */,
 				8B2A5BE92817A72900BBAB85 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

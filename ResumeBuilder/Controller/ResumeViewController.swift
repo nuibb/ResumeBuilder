@@ -52,25 +52,50 @@ extension ResumeViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             title = (self.resumeSections[indexPath.row] as! Profile).title
         }
-                    
+        
         cell.title.text = title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let selectedCell = tableView.cellForRow(at: indexPath)
-       // performSegue(withIdentifier: "ShowResume", sender: indexPath)
+        if self.resumeSections[indexPath.row] is BasicSection {
+            performSegue(withIdentifier: Constants.segueIdentifierForBasicSection, sender: indexPath)
+        } else if self.resumeSections[indexPath.row] is AdvancedSection {
+            performSegue(withIdentifier: Constants.segueIdentifierForAdvancedSection, sender: indexPath)
+        } else {
+            performSegue(withIdentifier: Constants.segueIdentifierForProfile, sender: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            self.resumeSections.remove(at: indexPath.row)
+
+            // MARK: Deleting from core data will be implemented in next version
+            
+            /*
+            let resumeViewModel = self.resumeSections[indexPath.row]
+            //if self.dbManager.deleteResume(byIdentifier: resumeViewModel.resume.id) {
+                //self.resumes.remove(at: indexPath.row)
+                //tableView.deleteRows(at: [indexPath], with: .automatic)
+            //}
+            */
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 }
 
 extension ResumeViewController {
     
     @objc func addSectionButtonTapped(sender: UIButton) {
-        print("Add")
+        showAlertController()
     }
     
     @objc func editSectionButtonTapped(sender: UIButton) {
-        print("Edit")
+        self.tableView.setEditing(true, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -81,9 +106,59 @@ extension ResumeViewController {
         footerView.editSectionButton.action = #selector(editSectionButtonTapped(sender:))
         return footerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 50.0
+    }
+}
+
+extension ResumeViewController {
+    
+    func showAlertController() {
+        // Declare Alert message
+        let dialogMessage = UIAlertController(title: Constants.templateAlertActionTitle, message: Constants.templateAlertActionMessage, preferredStyle: .alert)
+        
+        // Create Basic button with action handler
+        let basic = UIAlertAction(title: Constants.basicTemplateTitle, style: .default, handler: { (action) -> Void in
+            guard var model = self.resumeViewModel else { return }
+            if model.addSection(template: .Basic) {
+                self.resumeSections.append(model.sections.last as Any)
+                self.tableView.reloadData()
+            }
+        })
+        
+        // Create Advanced button with action handlder
+        let advanced = UIAlertAction(title: Constants.advancedTemplateTitle, style: .default) { (action) -> Void in
+            guard var model = self.resumeViewModel else { return }
+            if model.addSection(template: .Advanced) {
+                self.resumeSections.append(model.sections.last as Any)
+                self.tableView.reloadData()
+            }
+        }
+        
+        //Add Basic and Advanced button to dialog message
+        dialogMessage.addAction(basic)
+        dialogMessage.addAction(advanced)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+}
+
+// MARK: Segue Configuration
+extension ResumeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.segueIdentifierForBasicSection {
+            let controller = segue.destination as! BasicSectionViewController
+            guard let indexPath = sender as? IndexPath else {return}
+            //resumeViewController.resumeViewModel = self.resumes[indexPath.row]
+        } else if segue.identifier == Constants.segueIdentifierForAdvancedSection {
+            let controller = segue.destination as! AdvancedSectionViewController
+            guard let indexPath = sender as? IndexPath else {return}
+        } else {
+            let controller = segue.destination as! ProfileViewController
+            guard let indexPath = sender as? IndexPath else {return}
+        }
     }
 }
 

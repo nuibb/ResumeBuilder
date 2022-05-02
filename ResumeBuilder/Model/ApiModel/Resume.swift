@@ -11,8 +11,8 @@ struct Resume  {
     let id: UUID
     let title: String
     let profile : Profile
-    let basicSections : [BasicSection]
-    let advancedSections : [AdvancedSection]
+    var basicSections : [BasicSection]
+    var advancedSections : [AdvancedSection]
     
     init(_id: UUID, _title: String, _profile: Profile, _basicSections: [BasicSection], _advancedSections: [AdvancedSection]) {
         self.id = _id

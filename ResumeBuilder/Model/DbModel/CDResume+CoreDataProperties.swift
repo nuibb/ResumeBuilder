@@ -59,7 +59,7 @@ extension CDResume {
 }
 
 extension CDResume : Identifiable {
-
+    
 }
 
 extension CDResume {

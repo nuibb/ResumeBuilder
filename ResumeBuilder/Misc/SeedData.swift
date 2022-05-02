@@ -43,7 +43,7 @@ class SeedData {
         let educationInstitute2 = Organization(_title: Constants.educationTitle, _name: Constants.educationInstituteName2, _role: Constants.educationInstituteRole2, _roleTitle: Constants.educationInstituteRoleTitle, _period: Constants.educationInstitutePeriod2, _content: Constants.educationInstituteContent2)
         educationInstitutes.append(educationInstitute1)
         educationInstitutes.append(educationInstitute2)
-        let education = AdvancedSection(_title: Constants.workExperienceTitle, _organizations: educationInstitutes)
+        let education = AdvancedSection(_title: Constants.educationTitle, _organizations: educationInstitutes)
         advancedSections.append(workExperience)
         advancedSections.append(education)
         

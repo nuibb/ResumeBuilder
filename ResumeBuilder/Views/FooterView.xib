@@ -24,11 +24,13 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELA-3q-YEm">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Efi-Q1-TFr"/>
                         <barButtonItem title="Add Section" id="4QU-ib-k1q"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="gsO-Ml-jjF"/>
                         <barButtonItem title="|" id="jX8-Vg-qYH"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="wYZ-XM-xgR"/>
                         <barButtonItem title="Edit Sections" id="ASy-92-XDc"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="D9d-rc-fcn"/>
                     </items>
                 </toolbar>
             </subviews>

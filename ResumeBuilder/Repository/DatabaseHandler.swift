@@ -24,8 +24,12 @@ class DatabaseHandler {
         return object
     }
     
-    func fetch<T: NSManagedObject>(_ type: T.Type) -> [T] {
+    func fetch<T: NSManagedObject>(_ type: T.Type, with predicate: NSPredicate? = nil) -> [T] {
         let request = T.fetchRequest()
+        
+        if let pred = predicate {
+            request.predicate = pred
+        }
 
         do {
             let result = try context.fetch(request)

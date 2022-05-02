@@ -7,11 +7,23 @@
 
 import Foundation
 
+enum Template {
+    case Basic
+    case Advanced
+}
+
 class Constants{
     static let alertTitle = "Create New Resume"
     static let alertActionTitle = "Add Resume"
+    static let templateAlertActionTitle = "Add Template"
+    static let templateAlertActionMessage = "Select your preferred template section"
+    static let basicTemplateTitle = "Basic"
+    static let advancedTemplateTitle = "Advanced"
     static let textFieldPlaceholderText = "Add Your Name"
     static let segueIdentifierNameForResume = "ShowResume"
+    static let segueIdentifierForBasicSection = "ShowBasicSection"
+    static let segueIdentifierForAdvancedSection = "ShowAdvancedSection"
+    static let segueIdentifierForProfile = "ShowProfile"
     static let identifierNameForResumeCell = "ResumeCell"
     
     static let basicInfoTitle = "Basic Info"

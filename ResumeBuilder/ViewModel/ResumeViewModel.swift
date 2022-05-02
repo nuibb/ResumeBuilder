@@ -28,7 +28,10 @@ extension ResumeViewModel {
     
     // Create separate functions for each property.
     private func setName(resume: Resume) -> String {
-        return "\(resume.title.uppercased())'S RESUME"
+        if resume.title != Constants.defaultResumeTitle {
+            return "\(resume.title.uppercased())'S RESUME"
+        }
+        return Constants.defaultResumeTitle.uppercased()
     }
 }
 

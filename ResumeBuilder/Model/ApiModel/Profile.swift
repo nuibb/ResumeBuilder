@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 
 struct Profile  {
-    let title: String
-    let name : String
-    let address : String
-    let phone : String
-    let email : String
-    let avatar : Data?
+    var title: String
+    var name : String
+    var address : String
+    var phone : String
+    var email : String
+    var avatar : Data?
     
     init(_title: String, _name: String, _address: String, _phone: String, _email: String, _avatar: Data?)
     {

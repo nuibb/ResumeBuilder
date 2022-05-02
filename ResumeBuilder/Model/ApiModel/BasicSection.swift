@@ -9,9 +9,9 @@ import Foundation
 import CoreData
 
 struct BasicSection {
-    let title: String
-    let contents: String
-    let bulleted: Bool
+    var title: String
+    var contents: String
+    var bulleted: Bool
     
     init(_title: String, _contents: String, _bulleted: Bool)
     {

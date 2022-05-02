@@ -19,8 +19,8 @@ class ResumeListVC: UIViewController {
     
     var searchResults: [Resume]? {
         didSet {
-            guard let searchResults = searchResults else { return }
-            resumes = searchResults.map{ResumeViewModel.init(resume: $0)}
+            guard let results = searchResults else { return }
+            resumes = results.map{ResumeViewModel.init(resume: $0)}
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -29,16 +29,23 @@ class ResumeListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+    
+        // Add default resume template for the first time
+        if UserDefaults.standard.getDefaultResumeTitle() == nil {
+            UserDefaults.standard.setDefaultResumeTitle(value: Constants.defaultResumeTitle)
+            self.dbManager.createResume(title: Constants.defaultResumeTitle)
+            self.getResumes()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.tableView.rowHeight = 50;
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         getResumes()
     }
-   
+    
     @IBAction func addResume(_ sender: Any) {
         showAlertControllerToAddResume()
     }
@@ -96,11 +103,11 @@ extension ResumeListVC {
 extension ResumeListVC {
     func showAlertControllerToAddResume() {
         let alert = UIAlertController(title: Constants.alertTitle, message: "", preferredStyle: .alert)
-
+        
         alert.addTextField { (textField) in
             textField.placeholder = Constants.textFieldPlaceholderText
         }
-
+        
         let action = UIAlertAction(title: Constants.alertActionTitle, style: .default) { [unowned alert] _ in
             guard let textFields = alert.textFields, textFields.count > 0 else { return }
             if let resumeTitle = textFields[0].text {
@@ -108,7 +115,7 @@ extension ResumeListVC {
                 self.getResumes()
             }
         }
-
+        
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }

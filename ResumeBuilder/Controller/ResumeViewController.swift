@@ -15,7 +15,10 @@ class ResumeViewController: UIViewController {
     var resumeSections: [Any] = []
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.tableView.rowHeight = 50;
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewDidLoad() {
@@ -24,12 +27,6 @@ class ResumeViewController: UIViewController {
         guard let viewModel = resumeViewModel else {return}
         resumeSections = viewModel.sections
         self.title = viewModel.title
-    }
-    
-    @IBAction func addSection(_ sender: Any) {
-    }
-    
-    @IBAction func editSections(_ sender: Any) {
     }
 }
 
@@ -88,6 +85,25 @@ extension ResumeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: Navigation
+extension ResumeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.segueIdentifierForBasicSection {
+            let controller = segue.destination as! BasicSectionViewController
+            guard let indexPath = sender as? IndexPath, let section = self.resumeSections[indexPath.row] as? BasicSection else {return}
+            controller.basicSection = section
+        } else if segue.identifier == Constants.segueIdentifierForAdvancedSection {
+            let controller = segue.destination as! AdvancedSectionViewController
+            guard let indexPath = sender as? IndexPath, let section = self.resumeSections[indexPath.row] as? AdvancedSection else {return}
+            controller.advancedSection = section
+        } else {
+            let controller = segue.destination as! ProfileViewController
+            guard let indexPath = sender as? IndexPath, let profile = self.resumeSections[indexPath.row] as? Profile else {return}
+            controller.profile = profile
+        }
+    }
+}
+
 extension ResumeViewController {
     
     @objc func addSectionButtonTapped(sender: UIButton) {
@@ -142,23 +158,6 @@ extension ResumeViewController {
         
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
-    }
-}
-
-// MARK: Segue Configuration
-extension ResumeViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.segueIdentifierForBasicSection {
-            let controller = segue.destination as! BasicSectionViewController
-            guard let indexPath = sender as? IndexPath else {return}
-            //resumeViewController.resumeViewModel = self.resumes[indexPath.row]
-        } else if segue.identifier == Constants.segueIdentifierForAdvancedSection {
-            let controller = segue.destination as! AdvancedSectionViewController
-            guard let indexPath = sender as? IndexPath else {return}
-        } else {
-            let controller = segue.destination as! ProfileViewController
-            guard let indexPath = sender as? IndexPath else {return}
-        }
     }
 }
 

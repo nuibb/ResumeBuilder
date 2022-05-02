@@ -20,9 +20,9 @@ struct AdvancedSection {
     
     func toMap<T: NSManagedObject>(cdAdvanced: CDAdvanced) -> T? {
         cdAdvanced.title = title
-        guard let cdOrganization = DatabaseHandler.shared.add(CDOrganization.self) else { return nil}
         var organizationSet = Set<CDOrganization>()
         organizations?.forEach({ (organization) in
+            guard let cdOrganization = DatabaseHandler.shared.add(CDOrganization.self) else { return }
             organizationSet.insert(organization.toMap(cdOrganization: cdOrganization))
         })
 

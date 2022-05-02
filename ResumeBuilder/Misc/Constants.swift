@@ -7,12 +7,31 @@
 
 import Foundation
 
+enum UserDefaultsKeys : String {
+    case defaultResumeTitle
+}
+
 enum Template {
     case Basic
     case Advanced
 }
 
+extension UserDefaults {
+
+    //MARK: Set Default Resume Title
+    func setDefaultResumeTitle(value: String) {
+        set(value, forKey: UserDefaultsKeys.defaultResumeTitle.rawValue)
+        //synchronize()
+    }
+
+    //MARK: Retrieve Default Resume Title
+    func getDefaultResumeTitle() -> String? {
+        return string(forKey: UserDefaultsKeys.defaultResumeTitle.rawValue)
+    }
+}
+
 class Constants{
+    static let defaultResumeTitle = "My Resume"
     static let alertTitle = "Create New Resume"
     static let alertActionTitle = "Add Resume"
     static let templateAlertActionTitle = "Add Template"
@@ -25,12 +44,13 @@ class Constants{
     static let segueIdentifierForAdvancedSection = "ShowAdvancedSection"
     static let segueIdentifierForProfile = "ShowProfile"
     static let identifierNameForResumeCell = "ResumeCell"
+    static let identifierNameForAdvancedSectionCell = "AdvancedSectionCell"
     
     static let basicInfoTitle = "Basic Info"
     static let objectiveTitle = "Objective"
     static let objectiveContents = "Talented professional manager seeking to fill an executive role."
     static let referenceTitle = "References"
-    static let referenceContents = "Reference line item 1\n Reference line item 2\n Reference line item 3"
+    static let referenceContents = "Reference line item 1\nReference line item 2\nReference line item 3"
     static let otherActivitiesTitle = "Other Activities"
     static let otherActivitiesContents = "Member of the Football club FC Barcelona. I enjoy sport, traveling, reading books as well as outing with friends and families"
     

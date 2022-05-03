@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 struct Profile  {
+    var id: UUID
     var title: String
     var name : String
     var address : String
@@ -16,8 +17,9 @@ struct Profile  {
     var email : String
     var avatar : Data?
     
-    init(_title: String, _name: String, _address: String, _phone: String, _email: String, _avatar: Data?)
+    init(_id: UUID, _title: String, _name: String, _address: String, _phone: String, _email: String, _avatar: Data?)
     {
+        self.id = _id
         self.title = _title
         self.name = _name
         self.address = _address
@@ -27,6 +29,7 @@ struct Profile  {
     }
     
     func toMap<T: NSManagedObject>(cdProfile: CDProfile) -> T {
+        cdProfile.id = id
         cdProfile.title = title
         cdProfile.name = name
         cdProfile.address = address

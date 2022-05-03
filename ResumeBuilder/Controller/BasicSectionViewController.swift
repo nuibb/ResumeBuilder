@@ -12,6 +12,7 @@ class BasicSectionViewController: UIViewController {
     @IBOutlet weak var contentsTextView: UITextView!
     
     var basicSection: BasicSection?
+    weak var delegate: DelegateForUpdatingRepository?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,9 @@ class BasicSectionViewController: UIViewController {
         if self.isMovingFromParent {
             self.view.endEditing(true)
         }
+        
+        guard let section = basicSection else {return}
+        self.delegate?.updateRepository(object: section)
     }
     
     func updateFields(section: BasicSection) {
@@ -42,12 +46,16 @@ class BasicSectionViewController: UIViewController {
         self.contentsTextView.text = section.contents
     }
     
+    @IBAction func textFieldTextChanged(_ sender: Any) {
+        basicSection?.title = self.titleTextField.text!
+    }
+    
     @IBAction func toggleSwitch(_ sender: Any) {
         
     }
 }
 
-extension BasicSectionViewController: UITextFieldDelegate, UITextViewDelegate {
+extension BasicSectionViewController: UITextViewDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
@@ -58,8 +66,6 @@ extension BasicSectionViewController: UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(textField.text!)
-        basicSection?.title = self.titleTextField.text ?? ""
         self.view.endEditing(true)
         return true
     }

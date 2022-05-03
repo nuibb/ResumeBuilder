@@ -13,6 +13,9 @@ protocol ResumeRepository : BaseRepository {
     //func addSection(type: Template, into record: inout Resume) -> Bool
     func addBasicSection(section: BasicSection, into record: Resume) -> Bool
     func addAdvancedSection(section: AdvancedSection, into record: Resume) -> Bool
+    func updateBasicSection(section: BasicSection) -> Bool
+    func updateAdvancedSection(section: AdvancedSection) -> Bool
+    func updateProfile(profile: Profile) -> Bool
 }
 
 struct ResumeDataRepository : ResumeRepository {
@@ -150,33 +153,39 @@ struct ResumeDataRepository : ResumeRepository {
         return false
     }
     
-//    func addSection(type: Template, into record: inout Resume) -> Bool {
-//        print(type)
-//        print(record)
-//        let predicate = NSPredicate(format: "(id = %@)", record.id as CVarArg)
-//        let results = handler.fetch(CDResume.self, with: predicate)
-//        guard results.count != 0, let cdResume = results.first else {return false}
-//
-//        if type.self == Template.Basic {
-//            let basicSection = BasicSection(_title: "Basic", _contents: "", _bulleted: false)
-//            guard let cdBasic = handler.add(CDBasic.self) else { return false}
-//            let cdResult = cdResume.basic?.insert(basicSection.toMap(cdBasic: cdBasic))
-//            if let result = cdResult, result.inserted {
-//                record.basicSections.append(basicSection)
-//                return true
-//            }
-//        } else {
-//            let organization = Organization(_title: "", _name: "", _role: "", _roleTitle: "", _period: "", _content: "")
-//            let advancedSection = AdvancedSection(_title: "Advanced", _organizations: [organization])
-//            guard let cdAdvanced = handler.add(CDAdvanced.self) else { return false}
-//            guard let cdAdvancedSection = advancedSection.toMap(cdAdvanced: cdAdvanced) else { return false}
-//            let cdResult = cdResume.advanced?.insert(cdAdvancedSection as! CDAdvanced)
-//            if let result = cdResult,  result.inserted {
-//                record.advancedSections.append(advancedSection)
-//                return true
-//            }
-//        }
-//        return false
-//    }
+    func updateBasicSection(section: BasicSection) -> Bool {
+        let predicate = NSPredicate(format: "(id = %@)", section.id as CVarArg)
+        let results = handler.fetch(CDBasic.self, with: predicate)
+        guard results.count != 0, let cdBasic = results.first else {return false}
+        cdBasic.title = section.title
+        cdBasic.contents = section.contents
+        cdBasic.bulleted = section.bulleted
+        handler.save()
+        return true
+    }
+    
+    func updateAdvancedSection(section: AdvancedSection) -> Bool {
+        let predicate = NSPredicate(format: "(id = %@)", section.id as CVarArg)
+        let results = handler.fetch(CDAdvanced.self, with: predicate)
+        guard results.count != 0, let cdAdvanced = results.first else {return false}
+        cdAdvanced.title = section.title
+        // MARK: Organization part will be implemented in later version
+        //cdAdvanced.organization = section.organizations
+        handler.save()
+        return true
+    }
+    
+    func updateProfile(profile: Profile) -> Bool {
+        let predicate = NSPredicate(format: "(id = %@)", profile.id as CVarArg)
+        let results = handler.fetch(CDProfile.self, with: predicate)
+        guard results.count != 0, let cdProfile = results.first else {return false}
+        cdProfile.name = profile.name
+        cdProfile.address = profile.address
+        cdProfile.phone = profile.phone
+        cdProfile.email = profile.email
+        cdProfile.avatar = profile.avatar
+        handler.save()
+        return true
+    }
 }
 

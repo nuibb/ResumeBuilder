@@ -39,6 +39,8 @@ extension ResumeViewModel {
     //For default ordering in each resume
     private mutating func orderingSections() {
         
+        self.sections.removeAll()
+        
         //Add Basic Info
         self.sections.append(self.resume.profile as Any)
         
@@ -112,4 +114,35 @@ extension ResumeViewModel {
         }
     }
 }
+
+extension ResumeViewModel {
+    mutating func updateBasicSection(section: BasicSection) {
+        if dbManager.updateBasicSection(section: section) {
+            let matchedSections = self.resume.basicSections.filter{$0.id == section.id}
+            guard matchedSections.count > 0, var currentSection = matchedSections.first else { return }
+            currentSection.title = section.title
+            currentSection.contents = section.contents
+            currentSection.bulleted = section.bulleted
+            orderingSections()
+        }
+    }
+    
+    mutating func updateAdvancedSection(section: AdvancedSection) {
+        if dbManager.updateAdvancedSection(section: section) {
+            let matchedSections = self.resume.advancedSections.filter{$0.id == section.id}
+            guard matchedSections.count > 0, var currentSection = matchedSections.first else { return }
+            currentSection.title = section.title
+            // MARK: Organization part will be implemented in later version
+            orderingSections()
+        }
+    }
+    
+    mutating func updateProfile(profile: Profile) {
+        if dbManager.updateProfile(profile: profile) {
+            self.resume.profile = profile
+            self.sections[0] = profile
+        }
+    }
+}
+
 

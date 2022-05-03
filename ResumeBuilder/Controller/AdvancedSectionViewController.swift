@@ -12,6 +12,7 @@ class AdvancedSectionViewController: UIViewController {
     
     var advancedSection: AdvancedSection?
     private var organizations = [Organization]()
+    weak var delegate: DelegateForUpdatingRepository?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,9 @@ class AdvancedSectionViewController: UIViewController {
         if self.isMovingFromParent {
             self.view.endEditing(true)
         }
+        
+        guard let section = advancedSection else {return}
+        self.delegate?.updateRepository(object: section)
     }
 
 }

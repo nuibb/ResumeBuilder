@@ -10,7 +10,7 @@ import Foundation
 struct Resume  {
     let id: UUID
     let title: String
-    let profile : Profile
+    var profile : Profile
     var basicSections : [BasicSection]
     var advancedSections : [AdvancedSection]
     

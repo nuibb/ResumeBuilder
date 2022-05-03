@@ -41,4 +41,16 @@ struct DatabaseManager
     {
         return _resumeRepository.addAdvancedSection(section: section, into: record)
     }
+    
+    func updateBasicSection(section: BasicSection) -> Bool {
+        return _resumeRepository.updateBasicSection(section: section)
+    }
+    
+    func updateAdvancedSection(section: AdvancedSection) -> Bool {
+        return _resumeRepository.updateAdvancedSection(section: section)
+    }
+    
+    func updateProfile(profile: Profile) -> Bool {
+        return _resumeRepository.updateProfile(profile: profile)
+    }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class ResumeViewController: UIViewController {
+
     @IBOutlet weak var tableView: UITableView!
     
     var resumeViewModel: ResumeViewModel?
@@ -17,16 +18,17 @@ class ResumeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tableView.rowHeight = 50;
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        guard let viewModel = resumeViewModel else {return}
+        resumeSections = viewModel.sections
+        self.title = viewModel.title
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let viewModel = resumeViewModel else {return}
-        resumeSections = viewModel.sections
-        self.title = viewModel.title
+        self.tableView.rowHeight = 50;
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }
 
@@ -90,14 +92,17 @@ extension ResumeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.segueIdentifierForBasicSection {
             let controller = segue.destination as! BasicSectionViewController
+            controller.delegate = self
             guard let indexPath = sender as? IndexPath, let section = self.resumeSections[indexPath.row] as? BasicSection else {return}
             controller.basicSection = section
         } else if segue.identifier == Constants.segueIdentifierForAdvancedSection {
             let controller = segue.destination as! AdvancedSectionViewController
+            controller.delegate = self
             guard let indexPath = sender as? IndexPath, let section = self.resumeSections[indexPath.row] as? AdvancedSection else {return}
             controller.advancedSection = section
         } else {
             let controller = segue.destination as! ProfileViewController
+            controller.delegate = self
             guard let indexPath = sender as? IndexPath, let profile = self.resumeSections[indexPath.row] as? Profile else {return}
             controller.profile = profile
         }
@@ -161,4 +166,16 @@ extension ResumeViewController {
     }
 }
 
-
+extension ResumeViewController: DelegateForUpdatingRepository {
+    func updateRepository<T>(object: T) {
+        if object.self is Profile {
+            self.resumeViewModel?.updateProfile(profile: object as! Profile)
+        } else if object.self is BasicSection {
+            self.resumeViewModel?.updateBasicSection(section: object as! BasicSection)
+        } else if object.self is AdvancedSection {
+            self.resumeViewModel?.updateAdvancedSection(section: object as! AdvancedSection)
+        } else {
+            return
+        }
+    }
+}

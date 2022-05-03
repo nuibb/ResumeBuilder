@@ -15,7 +15,7 @@ class SeedData {
     
     func getDefaultResumeData(title: String) -> Resume {
         
-        let profile = Profile(_title: Constants.basicInfoTitle, _name: "", _address: "", _phone: "", _email: "", _avatar: nil)
+        let profile = Profile(_id: UUID(), _title: Constants.basicInfoTitle, _name: "", _address: "", _phone: "", _email: "", _avatar: nil)
         
         // MARK: - Basic Sections
         var basicSections = [BasicSection]()

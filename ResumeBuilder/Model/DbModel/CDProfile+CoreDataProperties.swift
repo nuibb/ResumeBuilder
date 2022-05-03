@@ -16,6 +16,7 @@ extension CDProfile {
         return NSFetchRequest<CDProfile>(entityName: "CDProfile")
     }
 
+    @NSManaged public var id: UUID?
     @NSManaged public var address: String?
     @NSManaged public var avatar: Data?
     @NSManaged public var email: String?
@@ -34,6 +35,6 @@ extension CDProfile {
     
     func convertToProfile() -> Profile?
     {
-        return Profile(_title: self.title!, _name: self.name!, _address: self.address!, _phone: self.phone!, _email: self.email!, _avatar: self.avatar)
+        return Profile(_id: self.id!, _title: self.title!, _name: self.name!, _address: self.address!, _phone: self.phone!, _email: self.email!, _avatar: self.avatar)
     }
 }

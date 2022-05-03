@@ -43,10 +43,16 @@
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="avatar" optional="YES" attributeType="Binary"/>
         <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="resume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDResume" inverseName="profile" inverseEntity="CDResume"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDResume" representedClassName="CDResume" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -64,7 +70,7 @@
         <element name="CDAdvanced" positionX="-348.7799682617188" positionY="-83.1251220703125" width="128" height="89"/>
         <element name="CDBasic" positionX="-187.73876953125" positionY="-77.08038330078125" width="128" height="104"/>
         <element name="CDOrganization" positionX="-344.5904541015625" positionY="46.54690551757812" width="128" height="164"/>
-        <element name="CDProfile" positionX="-227.6552734375" positionY="-393.1483764648438" width="128" height="134"/>
+        <element name="CDProfile" positionX="-227.6552734375" positionY="-393.1483764648438" width="128" height="149"/>
         <element name="CDResume" positionX="-270" positionY="-234" width="128" height="104"/>
     </elements>
 </model>

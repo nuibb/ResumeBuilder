@@ -159,6 +159,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="usernameTextChanged:" destination="PbP-2c-CXR" eventType="editingChanged" id="ybd-FW-SiE"/>
                                     <outlet property="delegate" destination="PbP-2c-CXR" id="i32-Hp-Irp"/>
                                 </connections>
                             </textField>
@@ -173,6 +174,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="addressTextChanged:" destination="PbP-2c-CXR" eventType="editingChanged" id="5uL-sl-iXZ"/>
                                     <outlet property="delegate" destination="PbP-2c-CXR" id="hxZ-bb-fhD"/>
                                 </connections>
                             </textField>
@@ -187,6 +189,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="phoneTextChanged:" destination="PbP-2c-CXR" eventType="editingChanged" id="yju-Mx-jVM"/>
                                     <outlet property="delegate" destination="PbP-2c-CXR" id="mEx-Ve-oAR"/>
                                 </connections>
                             </textField>
@@ -201,6 +204,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="emailTextChanged:" destination="PbP-2c-CXR" eventType="editingChanged" id="lL6-zD-pQH"/>
                                     <outlet property="delegate" destination="PbP-2c-CXR" id="EwO-22-UVf"/>
                                 </connections>
                             </textField>
@@ -424,6 +428,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="textFieldTextChanged:" destination="9At-71-iqt" eventType="editingChanged" id="kdL-w5-M8x"/>
                                     <outlet property="delegate" destination="9At-71-iqt" id="RcS-5L-gxD"/>
                                 </connections>
                             </textField>

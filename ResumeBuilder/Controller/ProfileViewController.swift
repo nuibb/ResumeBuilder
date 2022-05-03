@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userProfilePic: UIImageView!
     
     var profile: Profile?
+    weak var delegate: DelegateForUpdatingRepository?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,9 @@ class ProfileViewController: UIViewController {
         if self.isMovingFromParent {
             self.view.endEditing(true)
         }
+        
+        guard let userProfile = profile else { return }
+        self.delegate?.updateRepository(object: userProfile)
     }
     
     func updateFields(user: Profile) {
@@ -41,6 +46,22 @@ class ProfileViewController: UIViewController {
         userProfilePic.image = UIImage(data: image)
     }
     
+    @IBAction func usernameTextChanged(_ sender: Any) {
+        profile?.name = self.usernameTextField.text!
+    }
+    
+    @IBAction func addressTextChanged(_ sender: Any) {
+        profile?.address = self.addressTextField.text!
+    }
+    
+    @IBAction func phoneTextChanged(_ sender: Any) {
+        profile?.phone = self.phoneNumberTextField.text!
+    }
+    
+    @IBAction func emailTextChanged(_ sender: Any) {
+        profile?.email = self.emailTextField.text!
+    }
+    
 }
 
 extension ProfileViewController: UITextFieldDelegate {
@@ -50,30 +71,6 @@ extension ProfileViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch(textField) {
-        case self.usernameTextField:
-            print(self.usernameTextField.text!)
-            profile?.name = self.usernameTextField.text ?? ""
-            break
-        case self.addressTextField:
-            print(self.addressTextField.text!)
-            profile?.address = self.addressTextField.text ?? ""
-            break
-        case self.phoneNumberTextField:
-            print(self.phoneNumberTextField.text!)
-            profile?.phone = self.phoneNumberTextField.text ?? ""
-            break
-        case self.emailTextField:
-            print(self.emailTextField.text!)
-            profile?.email = self.emailTextField.text ?? ""
-            break
-        default:
-            break
-        }
-    
-        if textField == usernameTextField {
-            return false
-        }
         self.view.endEditing(true)
         return true
     }

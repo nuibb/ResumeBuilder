@@ -172,8 +172,10 @@ extension ResumeViewController: DelegateForUpdatingRepository {
             self.resumeViewModel?.updateProfile(profile: object as! Profile)
         } else if object.self is BasicSection {
             self.resumeViewModel?.updateBasicSection(section: object as! BasicSection)
+            self.tableView.reloadData()
         } else if object.self is AdvancedSection {
             self.resumeViewModel?.updateAdvancedSection(section: object as! AdvancedSection)
+            self.tableView.reloadData()
         } else {
             return
         }

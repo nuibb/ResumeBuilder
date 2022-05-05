@@ -168,9 +168,19 @@ struct ResumeDataRepository : ResumeRepository {
         let predicate = NSPredicate(format: "(id = %@)", section.id as CVarArg)
         let results = handler.fetch(CDAdvanced.self, with: predicate)
         guard results.count != 0, let cdAdvanced = results.first else {return false}
+        guard let organizations = section.organizations, let cdOrganizations = cdAdvanced.organization, cdOrganizations.count == organizations.count else { return false }
+        
+        for (index, cdOrganization) in cdOrganizations.enumerated() {
+            cdOrganization.title = organizations[index].title
+            cdOrganization.name = organizations[index].name
+            cdOrganization.role = organizations[index].role
+            cdOrganization.roleTitle = organizations[index].roleTitle
+            cdOrganization.period = organizations[index].period
+            cdOrganization.contentTitle = organizations[index].contentTitle
+            cdOrganization.content = organizations[index].content
+        }
+        
         cdAdvanced.title = section.title
-        // MARK: Organization part will be implemented in later version
-        //cdAdvanced.organization = section.organizations
         handler.save()
         return true
     }

@@ -11,7 +11,7 @@ import CoreData
 struct AdvancedSection {
     let id: UUID
     var title: String
-    let organizations: [Organization]?
+    var organizations: [Organization]?
     
     init(_id: UUID, _title: String, _organizations: [Organization])
     {

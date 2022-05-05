@@ -120,7 +120,6 @@ extension ResumeViewModel {
         if dbManager.updateBasicSection(section: section) {
             let matchedIndices = self.resume.basicSections.indices.filter{self.resume.basicSections[$0].id == section.id}
             guard matchedIndices.count > 0, let matchedIndex = matchedIndices.first else {return}
-            print(self.resume.basicSections[matchedIndex])
             self.resume.basicSections[matchedIndex] = section
             orderingSections()
         }
@@ -128,10 +127,9 @@ extension ResumeViewModel {
     
     mutating func updateAdvancedSection(section: AdvancedSection) {
         if dbManager.updateAdvancedSection(section: section) {
-            let matchedSections = self.resume.advancedSections.filter{$0.id == section.id}
-            guard matchedSections.count > 0, var currentSection = matchedSections.first else { return }
-            currentSection.title = section.title
-            // MARK: Organization part will be implemented in later version
+            let matchedIndices = self.resume.advancedSections.indices.filter{self.resume.advancedSections[$0].id == section.id}
+            guard matchedIndices.count > 0, let matchedIndex = matchedIndices.first else {return}
+            self.resume.advancedSections[matchedIndex] = section
             orderingSections()
         }
     }

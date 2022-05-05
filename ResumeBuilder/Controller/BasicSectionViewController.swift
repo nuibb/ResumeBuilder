@@ -66,6 +66,7 @@ extension BasicSectionViewController: UITextViewDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
     }

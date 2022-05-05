@@ -11,12 +11,12 @@ import CoreData
 struct Organization {
     let id: UUID
     let title: String
-    let name: String
-    let role: String
+    var name: String
+    var role: String
     let roleTitle: String
-    let period: String
+    var period: String
     let contentTitle: String
-    let content: String
+    var content: String
     
     init(_id: UUID, _title: String, _name: String, _role: String, _roleTitle: String, _period: String, _contentTitle: String, _content: String)
     {

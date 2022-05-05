@@ -35,10 +35,31 @@ class AdvancedSectionViewController: UIViewController {
             self.view.endEditing(true)
         }
         
-        guard let section = advancedSection else {return}
+        guard var section = advancedSection else {return}
+        section.organizations = self.organizations
         self.delegate?.updateRepository(object: section)
     }
-
+    
+    @objc func nameTextFieldDidChange(_ sender: Any) {
+        guard let textField = sender as? UITextField else {return}
+        guard let name = textField.text else { return }
+        let index = textField.tag
+        self.organizations[index].name = name
+    }
+    
+    @objc func roleTextFieldDidChange(_ sender: Any) {
+        guard let textField = sender as? UITextField else {return}
+        guard let role = textField.text else { return }
+        let index = textField.tag
+        self.organizations[index].role = role
+    }
+    
+    @objc func periodTextFieldDidChange(_ sender: Any) {
+        guard let textField = sender as? UITextField else {return}
+        guard let period = textField.text else { return }
+        let index = textField.tag
+        self.organizations[index].period = period
+    }
 }
 
 extension AdvancedSectionViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,6 +80,14 @@ extension AdvancedSectionViewController: UITableViewDelegate, UITableViewDataSou
         cell.contentTitle.text = organization.contentTitle
         cell.content.text = organization.content
         
+        cell.name.addTarget(self, action: #selector(nameTextFieldDidChange(_:)), for: .editingChanged)
+        cell.name.tag = indexPath.row
+        cell.role.addTarget(self, action: #selector(roleTextFieldDidChange(_:)), for: .editingChanged)
+        cell.role.tag = indexPath.row
+        cell.period.addTarget(self, action: #selector(periodTextFieldDidChange(_:)), for: .editingChanged)
+        cell.period.tag = indexPath.row
+        cell.content.tag = indexPath.row
+
         return cell
     }
     
@@ -82,13 +111,12 @@ extension AdvancedSectionViewController: UITextFieldDelegate, UITextViewDelegate
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(textField.text!)
-        
+        textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        
+        self.organizations[textView.tag].content = textView.text
     }
 }

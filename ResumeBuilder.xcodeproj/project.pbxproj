@@ -220,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				8BE51296281C550400246361 /* ApiModel */,
-				8BE51297281C551100246361 /* DbModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +248,7 @@
 		8B2A5C1D2819337E00BBAB85 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8BE51297281C551100246361 /* DbModel */,
 				8B2A5BF42817A72A00BBAB85 /* LaunchScreen.storyboard */,
 				8B2A5BEC2817A72900BBAB85 /* Main.storyboard */,
 				8BD55C80281E7FBD0060441D /* FooterView.xib */,

@@ -30,7 +30,7 @@ extension UserDefaults {
     }
 }
 
-class Constants{
+enum Constants{
     static let defaultResumeTitle = "My Resume"
     static let alertTitle = "Create New Resume"
     static let alertActionTitle = "Add Resume"
